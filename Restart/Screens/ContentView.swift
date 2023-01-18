@@ -3,19 +3,22 @@
 //  Restart
 //
 //  Created by Aleksandr Skorotkin on 16.01.2023.
+//  Copyright © 2023 ADSkor. All rights reserved.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            if isOnboardingViewActive {
+                OnboardingView()
+            } else {
+                HomeView()
+            }
         }
-        .padding()
     }
 }
 
